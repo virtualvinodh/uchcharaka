@@ -1,0 +1,48 @@
+@import url('https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha-fonts/aksharamukha-fonts.css');
+
+/* remove this once the Noto Sans Sinhala in the Github repository gets fixed */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala&display=swap');
+
+
+@font-face {
+  font-family: 'AnglamTamil';
+  src: url('./NotoSansTamil-Regular-phonetic.otf');
+}
+
+.kannada {
+  font-family: "Tiro Kannada" !important;
+  font-size: 120%;
+}
+.tamil {
+  font-family: "AnglamTamil" !important;
+  line-height: 1.7em;
+  font-feature-settings: "ss01";
+  font-size: 115%;
+}
+.sinhala {
+  font-family: "Noto Sans Sinhala" !important;
+  font-size: 120%;
+}
+.ipa {
+  font-family: "Noto Sans" !important;
+  line-height: 1.5em;
+  font-size: 120%;
+}
+.malayalam {
+  font-family: "Noto Sans Malayalam" !important;
+  font-size: 120%;
+}
+.telugu {
+  font-family: "Tiro Telugu" !important;
+  font-size: 120%;
+}
+.urdu {
+  font-family: "Noto Nastaliq Urdu" !important;
+  direction: rtl;
+  font-size: 120%;
+}
+.devanagari {
+  font-family: "Noto Sans Devanagari" !important;
+  font-size: 120%;
+}
+

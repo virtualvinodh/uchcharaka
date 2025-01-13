@@ -1,0 +1,176 @@
+<template>
+  <q-page class="book-content">
+    <br/>
+    <div class="q-display-1 q-ma-md">{{ getScriptObject(name).label }}</div>
+    <q-select
+        filter
+        autofocus-filter
+        filter-placeholder="search"
+        v-model="script"
+        :style="{'max-width': '350px'}"
+        placeholder="Select Script"
+        class="col-xs-6 col-md-6 q-ma-sm print-hide"
+        stack-label="Script"
+        :options="scriptsOutput"
+      />
+      <input-options :inputScript="name" :outputScript="script"
+      :preOptionsInput="preOptions" :showscriptName="false"
+      :postOptions="postOptions" v-model="preOptions"
+      :style="{'max-width': '375px'}"
+      />
+      <q-collapsible icon="record_voice_over" sublabel="Voice options"
+      :style="{'max-width': '375px'}"
+      >
+      <span v-if="true">
+       <q-select
+        filter
+        inset
+        autofocus-filter
+        filter-placeholder="search"
+        v-model="voiceLang"
+        placeholder="Voice"
+        class="q-ml-sm q-mt-sm"
+        :style="{'max-width': '350px'}"
+        :options="voiceList"
+        stack-label="Voice"
+      />
+      <div class="row q-ml-sm q-mb-lg"><div class="col-md-3 q-mt-lg q-ml-sml"> Speech Speed </div>
+      <q-slider v-model="rate" :min="0" :max="2" :step="0.1" :style="{'width':'200px'}" snap label-always color="grey-8" class="col-md-7"></q-slider></div>
+    </span>
+  </q-collapsible>
+  <output-options :inputScript="name" :outputScript="script" :postOptionsInput="postOptions"
+    :sourcePreserveInput="sourcePreserve" :showscriptName="false"
+    :style="{'max-width': '375px'}"
+       :convertText="'convertText'" :hideSourcePreserve="false"
+       @input="convertOutputOptions($event)"
+    ></output-options>
+  <q-tabs color="grey-8">
+  <!-- Tabs - notice slot="title" -->
+  <q-tab default slot="title" name="sentence" label="Sentence" />
+  <q-tab slot="title" name="word" label="Word" />
+  <q-tab slot="title" name="tooltip" label="Tooltip" />
+
+  <!-- Targets -->
+  <q-tab-pane name="sentence">
+    <render-text :source="name" :text="text" :options="options" mode="sentence" :rate="rate" class="q-ml-ml q-mt-sm" :voiceName="voiceLang"></render-text>
+  </q-tab-pane>
+  <q-tab-pane name="word">
+    <render-text :source="name" :text="text" :options="options" mode="word" :rate="rate" class="q-ml-ml q-mt-sm" :voiceName="voiceLang"></render-text>
+  </q-tab-pane>
+  <q-tab-pane name="tooltip">
+    <render-text :source="name" :text="text" :options="options" mode="tooltip" :rate="rate" class="q-ml-ml q-mt-sm" :voiceName="voiceLang"></render-text>
+  </q-tab-pane>
+</q-tabs>
+
+  </q-page>
+</template>
+
+<style scoped>
+  .demo {
+      font-family: Arial;
+  }
+</style>
+
+<script>
+import RenderText from '../components/RenderText.vue'
+import ControlsPlug from '../components/ControlsPlug'
+import OutputOptions from '../components/OutputOptions'
+import InputOptions from '../components/InputOptions.vue'
+import { ScriptMixin } from '../mixins/ScriptMixin'
+import {QPageSticky, QInnerLoading, QBtn, QTabs, QTab, QTabPane, QSlider, QSelect, QSpinnerGears, QCollapsible} from 'quasar'
+
+export default {
+  mixins: [ScriptMixin],
+  components: {
+    QCollapsible,
+    QSelect,
+    OutputOptions,
+    InputOptions,
+    QSlider,
+    QTabs,
+    QTab,
+    QTabPane,
+    ControlsPlug,
+    QPageSticky,
+    RenderText,
+    QInnerLoading,
+    QSpinnerGears,
+    QBtn
+  },
+  data () {
+    return {
+      script: this.randomScript,
+      preOptions: [],
+      postOptions: [],
+      sourcePreserve: 'Medium',
+      convertText: [],
+      voiceLang: '',
+      rate: 0.75,
+      refresh: 1,
+      refresh2: 2,
+      text: '. . .',
+      textJSON: [],
+      name: this.$route.params.text,
+      updateMenu: true,
+      loading: true,
+      texts: {
+        'it': `L'italiano è una lingua romanza parlata principalmente in Italia. Per ragioni storiche e geografiche, l'italiano è la lingua romanza meno divergente dal latino (complessivamente a pari merito, anche se in parametri diversi, con la lingua sarda). L'italiano è classificato al 23º posto tra le lingue per numero di parlanti nel mondo e, in Italia, è utilizzato da circa 58 milioni di residenti. Nel 2015 era la lingua materna del 90,4% dei residenti in Italia, che spesso lo acquisiscono e lo usano insieme alle varianti regionali dell'italiano, alle lingue regionali e ai dialetti. In Italia viene ampiamente usato per tutti i tipi di comunicazione della vita quotidiana e prevale largamente nei mezzi di comunicazione nazionali, nell'amministrazione pubblica dello Stato italiano e nell'editoria. Oltre ad essere la lingua ufficiale dell'Italia e di San Marino, è anche una delle lingue ufficiali dell'Unione europea, della Svizzera, della Città del Vaticano e del Sovrano militare ordine di Malta. È inoltre riconosciuto e tutelato come «lingua della minoranza nazionale italiana» dalla Costituzione slovena e croata nei territori in cui vivono popolazioni di dialetto istriano. È diffuso nelle comunità di emigrazione italiana, è ampiamente noto anche per ragioni pratiche in diverse aree geografiche ed è una delle lingue straniere più studiate nel mondo.Dal punto di vista storico, l'italiano è una lingua codificata tra Quattrocento e Cinquecento sulla base del fiorentino letterario usato nel Trecento.`,
+        'pt-br': 'A língua portuguesa, também designada português, é uma língua indo-europeia românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal. Com a criação do Reino de Portugal em 1139 e a expansão para o sul na sequência da Reconquista, deu-se a difusão da língua pelas terras conquistadas e, mais tarde, com as descobertas portuguesas, para o Brasil, África e outras partes do mundo. O português foi usado, naquela época, não somente nas cidades conquistadas pelos portugueses, mas também por muitos governantes locais nos seus contatos com outros estrangeiros poderosos. Especialmente nessa altura, a língua portuguesa também influenciou várias línguas. Durante a Era dos Descobrimentos, marinheiros portugueses levaram o seu idioma para lugares distantes. A exploração foi seguida por tentativas de colonizar novas terras para o Império Português e, como resultado, o português dispersou-se pelo mundo. Brasil e Portugal são os dois únicos países cuja língua primária é o português. É língua oficial em antigas colônias portuguesas, nomeadamente, Moçambique, Angola, Cabo Verde, Guiné Equatorial, Guiné-Bissau e São Tomé e Príncipe, todas na África. Além disso, por razões históricas, falantes do português, ou de crioulos portugueses, são encontrados também em Macau (China), Timor-Leste, em Damão e Diu, nos estados de Goa (Índia) e Malaca (na Malásia, que conta com utilizadores do crioulo kristáng, ou Língua cristã), em enclaves na ilha das Flores (Indonésia), Baticaloa no (Sri Lanka) e nas ilhas ABC no Caribe.',
+        'pt-pt': 'A língua portuguesa, também designada português, é uma língua indo-europeia românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal. Com a criação do Reino de Portugal em 1139 e a expansão para o sul na sequência da Reconquista, deu-se a difusão da língua pelas terras conquistadas e, mais tarde, com as descobertas portuguesas, para o Brasil, África e outras partes do mundo. O português foi usado, naquela época, não somente nas cidades conquistadas pelos portugueses, mas também por muitos governantes locais nos seus contatos com outros estrangeiros poderosos. Especialmente nessa altura, a língua portuguesa também influenciou várias línguas. Durante a Era dos Descobrimentos, marinheiros portugueses levaram o seu idioma para lugares distantes. A exploração foi seguida por tentativas de colonizar novas terras para o Império Português e, como resultado, o português dispersou-se pelo mundo. Brasil e Portugal são os dois únicos países cuja língua primária é o português. É língua oficial em antigas colônias portuguesas, nomeadamente, Moçambique, Angola, Cabo Verde, Guiné Equatorial, Guiné-Bissau e São Tomé e Príncipe, todas na África. Além disso, por razões históricas, falantes do português, ou de crioulos portugueses, são encontrados também em Macau (China), Timor-Leste, em Damão e Diu, nos estados de Goa (Índia) e Malaca (na Malásia, que conta com utilizadores do crioulo kristáng, ou Língua cristã), em enclaves na ilha das Flores (Indonésia), Baticaloa no (Sri Lanka) e nas ilhas ABC no Caribe.',
+        'de': 'Die deutsche Sprache - Deutsch ist eine westgermanische Sprache, die weltweit etwa 90 bis 105 Millionen Menschen als Muttersprache und weiteren rund 80 Millionen als Zweitsprache oder Fremdsprache dient. Das Deutsche ist eine plurizentrische Sprache, enthält also mehrere Standardvarietäten in verschiedenen Regionen. Ihr Sprachgebiet umfasst Deutschland, Österreich, die Deutschschweiz, Liechtenstein, Luxemburg, Ostbelgien, Südtirol, das Elsass und den Nordosten Lothringens sowie Nordschleswig. Außerdem ist Deutsch eine Minderheitensprache in einigen europäischen und außereuropäischen Ländern, zum Beispiel in Rumänien und Nationalsprache im afrikanischen Namibia. Deutsch ist die meistgesprochene Muttersprache in der Europäischen Union (EU). Ursprünglich bestand eine Vielzahl von Mundarten innerhalb eines Dialektkontinuums, das sich aufgrund der zweiten (hochdeutschen) Lautverschiebung in hochdeutsche (oberdeutsche und mitteldeutsche) und niederdeutsche Mundarten einteilen lässt. Da die Niederdeutsche Sprache außerhalb des Hochdeutschen steht, ist sie oft nicht mitgemeint, wenn von „der deutschen Sprache“ die Rede ist. Teilweise wird Niederdeutsch - „Platt“ aber auch als Dialekt des Deutschen behandelt. Die deutsche Standardsprache ist mit ihren Standardvarietäten bundesdeutsches Deutsch, österreichisches Deutsch und schweizerisches Deutsch das Ergebnis bewusster sprachplanerischer Eingriffe. Das Standarddeutsche überspannt als Dachsprache den Großteil der Mundarten des Dialektkontinuums. Eine Ausnahme sind zum Beispiel die Luxemburger Dialekte, die nunmehr unter Letzebuergesch und somit nur noch indirekt als Deutsch zusammengefasst werden.',
+        'fr': "Le français est parlé, en 2024, sur tous les continents par environ 343 millions de personnes: 235 millions l'emploient quotidiennement et 113 millions en sont des locuteurs natifs. En 2018, 80 millions d'élèves et étudiants s'instruisent en français dans le monde. Selon l'Organisation internationale de la francophonie (OIF), il pourrait y avoir 700 millions de francophones sur Terre en 2050. Le français est la cinquième langue parlée au monde après l'anglais, le mandarin, le hindi et l'espagnol. Elle est également la deuxième langue apprise sur le globe et la troisième langue des affaires et du commerce. Le français se classe deuxième parmi les langues étrangères les plus fréquemment enseignées à travers le monde. Il est également la quatrième langue utilisée sur Internet après l'espagnol, le mandarin et l'anglais, langue dont le vocabulaire a été fortement enrichi par le français. Dans le monde, vingt-sept États ont le français comme langue officielle. C'est une des six langues officielles ainsi qu'une des deux langues de travail de l'Organisation des Nations unies. Le français est une langue officielle ou de travail de nombreuses organisations gouvernementales internationales, parmi lesquelles l'Union postale universelle ou les trois autorités mondiales de régulation du système métrique. Il est aussi langue officielle ou de travail de nombreuses organisations gouvernementales régionales, telles que l'Union africaine ou l’Union européenne, et est aussi langue officielle ou de travail de nombreuses organisations non gouvernementales internationales, comme le Comité international olympique ou le Mouvement international de la Croix-Rouge et du Croissant-Rouge. Grâce à sa présence sur tous les continents et du fait qu'elle est l'une des langues officielles de l'ONU ainsi qu'une de ses langues de travail, le français figure parmi les langues les plus influentes du monde. ",
+        'es-419': 'El español o castellano es una lengua romance procedente del latín hablado, perteneciente a la familia de lenguas indoeuropeas. Forma parte del grupo ibérico y es originaria de Castilla, reino medieval de la península ibérica. Hay más de 600 millones de personas que hablan español, de las cuales casi 500 millones son hablantes nativos. Es el idioma más estudiado en todos los niveles de enseñanza de Estados Unidos y la segunda lengua más estudiada en la educación secundaria superior de la Unión Europea.El español es la cuarta lengua más estudiada del mundo con 24,2 millones de alumnos. Es la cuarta lengua más hablada del mundo (tras el inglés, chino mandarín e hindi) y la segunda lengua más hablada por número de hablantes nativos (tras el chino mandarín). Así pues, puede ser considerado como el segundo idioma en comunicación internacional (tras el inglés).El español tiene la tercera población alfabetizada del mundo. En 2008, el español tenía el 5,47 % de la población mundial alfabetizada. El español es la tercera lengua más utilizada para la producción de información en los medios de comunicación, como también la tercera lengua con más usuarios de Internet, después del chino y el inglés. En 2019, el español tenía unos 364 millones de usuarios en Internet, lo cual representaba el 7,9 % del total. La lengua es hablada principalmente en España e Hispanoamérica. En 2015, se estimó que en los Estados Unidos había más de 40 millones de hispanohablantes.En Zamboanga, donde el español ya no es lengua de habla mayoritaria ni oficial, el mismo sigue manteniendo importancia en el sentido cultural, histórico y lingüístico. En Andorra, la mayoría de la población sabe hablar español. Guinea Ecuatorial, donde es lengua oficial, alrededor del 70 % de su población sabe hablar español. En los campos de refugiados de la República Árabe Saharaui Democrática el español es un idioma significativo.',
+        'es': 'El español o castellano es una lengua romance procedente del latín hablado, perteneciente a la familia de lenguas indoeuropeas. Forma parte del grupo ibérico y es originaria de Castilla, reino medieval de la península ibérica. Hay más de 600 millones de personas que hablan español, de las cuales casi 500 millones son hablantes nativos. Es el idioma más estudiado en todos los niveles de enseñanza de Estados Unidos y la segunda lengua más estudiada en la educación secundaria superior de la Unión Europea.El español es la cuarta lengua más estudiada del mundo con 24,2 millones de alumnos. Es la cuarta lengua más hablada del mundo (tras el inglés, chino mandarín e hindi) y la segunda lengua más hablada por número de hablantes nativos (tras el chino mandarín). Así pues, puede ser considerado como el segundo idioma en comunicación internacional (tras el inglés).El español tiene la tercera población alfabetizada del mundo. En 2008, el español tenía el 5,47 % de la población mundial alfabetizada. El español es la tercera lengua más utilizada para la producción de información en los medios de comunicación, como también la tercera lengua con más usuarios de Internet, después del chino y el inglés. En 2019, el español tenía unos 364 millones de usuarios en Internet, lo cual representaba el 7,9 % del total. La lengua es hablada principalmente en España e Hispanoamérica. En 2015, se estimó que en los Estados Unidos había más de 40 millones de hispanohablantes.En Zamboanga, donde el español ya no es lengua de habla mayoritaria ni oficial, el mismo sigue manteniendo importancia en el sentido cultural, histórico y lingüístico. En Andorra, la mayoría de la población sabe hablar español. Guinea Ecuatorial, donde es lengua oficial, alrededor del 70 % de su población sabe hablar español. En los campos de refugiados de la República Árabe Saharaui Democrática el español es un idioma significativo.',
+        'en-us': 'English is a West Germanic language in the Indo-European language family, whose speakers, called Anglophones, originated in early medieval England on the island of Great Britain. The namesake of the language is the Angles, one of the ancient Germanic peoples that migrated to Britain. It is the most spoken language in the world, primarily due to the global influences of the former British Empire (succeeded by the Commonwealth of Nations) and the United States. English is the third-most spoken native language, after Mandarin Chinese and Spanish; it is also the most widely learned second language in the world, with more second-language speakers than native speakers. English is either the official language or one of the official languages in 59 sovereign states (such as India, Ireland, and Canada). In some other countries, it is the sole or dominant language for historical reasons without being explicitly defined by law (such as in the United States and United Kingdom). It is a co-official language of the United Nations, the European Union, and many other international and regional organisations. It has also become the de facto lingua franca of diplomacy, science, technology, international trade, logistics, tourism, aviation, entertainment, and the Internet. English accounts for at least 70% of total speakers of the Germanic language branch, and as of 2021, Ethnologue estimated that there were over 1.5 billion speakers worldwide.Old English emerged from a group of West Germanic dialects spoken by the Anglo-Saxons. Late Old English borrowed some grammar and core vocabulary from Old Norse, a North Germanic language. Then, Middle English borrowed vocabulary extensively from French dialects, which are the source of approximately 28% of Modern English words, and from Latin, which is the source of an additional 28%. As such, though most of its total vocabulary comes from Romance languages, Modern English\'s grammar, phonology, and most commonly used words in everyday use keep it genealogically classified under the Germanic branch. It exists on a dialect continuum with Scots and is then most closely related to the Low Saxon and Frisian languages.',
+        'en-gb': 'English is a West Germanic language in the Indo-European language family, whose speakers, called Anglophones, originated in early medieval England on the island of Great Britain. The namesake of the language is the Angles, one of the ancient Germanic peoples that migrated to Britain. It is the most spoken language in the world, primarily due to the global influences of the former British Empire (succeeded by the Commonwealth of Nations) and the United States. English is the third-most spoken native language, after Mandarin Chinese and Spanish; it is also the most widely learned second language in the world, with more second-language speakers than native speakers. English is either the official language or one of the official languages in 59 sovereign states (such as India, Ireland, and Canada). In some other countries, it is the sole or dominant language for historical reasons without being explicitly defined by law (such as in the United States and United Kingdom). It is a co-official language of the United Nations, the European Union, and many other international and regional organisations. It has also become the de facto lingua franca of diplomacy, science, technology, international trade, logistics, tourism, aviation, entertainment, and the Internet. English accounts for at least 70% of total speakers of the Germanic language branch, and as of 2021, Ethnologue estimated that there were over 1.5 billion speakers worldwide.Old English emerged from a group of West Germanic dialects spoken by the Anglo-Saxons. Late Old English borrowed some grammar and core vocabulary from Old Norse, a North Germanic language. Then, Middle English borrowed vocabulary extensively from French dialects, which are the source of approximately 28% of Modern English words, and from Latin, which is the source of an additional 28%. As such, though most of its total vocabulary comes from Romance languages, Modern English\'s grammar, phonology, and most commonly used words in everyday use keep it genealogically classified under the Germanic branch. It exists on a dialect continuum with Scots and is then most closely related to the Low Saxon and Frisian languages.'
+      }
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      this.name = to.params.text
+      this.refresh2++
+      this.renderPage()
+      if (this.voiceExists) {
+        this.voiceLang = this.voiceList[0].value
+      }
+    }
+  },
+  computed: {
+    options: function () {
+      console.log(this.refresh2)
+      return {
+        'script': this.script,
+        'postOptions': this.postOptions,
+        'preOptions': this.preOptions,
+        'sourcePreserve': this.sourcePreserve
+      }
+    },
+    voiceList: function () {
+      console.log(this.refresh)
+      return this.getVoiceList(this.name)
+    },
+    voiceExists: function () {
+      return this.voiceList.length > 0
+    }
+  },
+  mounted: function () {
+    this.renderPage()
+    setTimeout(() => {
+      this.refresh++
+      if (this.voiceExists) {
+        this.voiceLang = this.voiceList[0].value
+      }
+    }, 1000)
+  },
+  methods: {
+    convertOutputOptions: function (event) {
+      this.postOptions = event[0]
+      this.sourcePreserve = event[1]
+    },
+    renderPage: function () {
+      this.text = this.texts[this.name]
+    }
+  }
+}
+</script>
