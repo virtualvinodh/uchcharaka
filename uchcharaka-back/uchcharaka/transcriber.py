@@ -59,7 +59,7 @@ class Transcriber:
             #self.preoptions.remove('showstress')
 
         # speical processing for Tamil
-        if 'removeDifferentiation' in self.preoptions and 'Tamil' in self.tgt:
+        if 'removeDifferentiation' in self.postoptions and 'Tamil' in self.tgt:
             self.accuracy = 'Low'
 
         if 'IPA' in self.tgt:

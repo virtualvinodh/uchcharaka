@@ -142,7 +142,7 @@ export const ScriptMixin = {
           value: 'Urdu'
         },
         {
-          label: 'International Phonetic Alphabet',
+          label: 'IPA',
           value: 'IPA'
         }
       ],

@@ -3,16 +3,16 @@
     <table :style="{'border-collapse': 'collapse'}">
           <tr>
               <th>IPA</th>
-              <th v-if="!inaccurateScripts.includes(script)">{{script}} (High)</th>
-              <th v-if="!inaccurateScripts.includes(script)">{{script}} (Medium)</th>
-              <th v-if="!inaccurateScripts.includes(script)">{{script}} (Low)</th>
-              <th v-if="inaccurateScripts.includes(script)">{{script}}</th>
+              <th v-if="!inaccurateScripts.includes(script)">High</th>
+              <th v-if="!inaccurateScripts.includes(script)">Medium</th>
+              <th v-if="!inaccurateScripts.includes(script)">Low</th>
+              <th v-if="inaccurateScripts.includes(script)"></th>
             </tr>
             <span></span>
             <tr v-for="(data,i) in consonants" :key="i">
               <td :class="ipa">{{data.phoneme}}
                 <q-btn icon="record_voice_over" flat compact class="q-ml-sm" @click="audioIPA(data.phoneme)"/>
-                <q-btn icon="link" flat/>
+                <a :href="'https://en.wikipedia.org/wiki/'+data.wikilink" target="_blank" v-if="data.wikilink" class="text-grey-10"><q-icon name="link"></q-icon></a>
               </td>
               <td :class="script.toLowerCase()" v-if="!inaccurateScripts.includes(script)">
                 {{consonantsMap[script]['High'][i]}}

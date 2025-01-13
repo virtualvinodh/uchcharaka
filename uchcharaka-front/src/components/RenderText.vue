@@ -1,7 +1,7 @@
 <template>
   <div>
    <div v-if="mode == 'tooltip'" :style="{'line-height': '1.5em'}">
-   <div class="q-ma-md text-grey-7"><i>Click on the word to hear it.</i></div>
+   <div class="q-ma-md text-grey-7" v-if="voiceName"><i>Click on the word to hear it.</i></div>
   <span v-for="(t, i) in textJSON" :key="i" class="q-mb-md">
     <span>
       <q-btn dense size="15px" class="q-ml-sm" compact flat @click="speakText(t, 0.75, voiceName)"
@@ -24,7 +24,7 @@
   </div>
 </span>
 <span  v-if="mode == 'word'">
-  <div class="q-ma-md text-grey-7"><i>Click on the transcription to hear it.</i></div>
+  <div class="q-ma-md text-grey-7" v-if="voiceName"><i>Click on the transcription to hear it.</i></div>
   <table>
   <tr>
     <td v-for="(t, i) in textJSON" :key="i">

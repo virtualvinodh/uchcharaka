@@ -6,14 +6,6 @@ export default [
   },
 
   {
-    path: '/web-api',
-    component: () => import('layouts/default'),
-    children: [
-      { path: '', component: () => import('pages/web-api') }
-    ]
-  },
-
-  {
     path: '/python',
     component: () => import('layouts/default'),
     children: [
