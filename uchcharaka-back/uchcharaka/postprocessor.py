@@ -71,11 +71,10 @@ class PostProcessor:
         if 'Tamil' in self.tgt:
             Strng = Strng.replace( '³்', '்³',)
             VedicSign = ['॑', '॒', '᳚']
-            TamilDiacritic = ['ʼ', 'ˮ', '꞉', '²', '³', '⁴', '₂', '₃', '₄']
-            print(Strng)
-            for x in TamilDiacritic:
+
+            for x in helper.TamilDiacritics:
                 for y in VedicSign:
-                    Strng = Strng.replace(y + x, x + y)
+                    Strng = Strng.replace(x + y, y + x)
 
         if 'Malayalam' in self.tgt:
             dot = '(\u0323)'
@@ -92,8 +91,13 @@ class PostProcessor:
 
         return Strng
 
-    def gdbDifferentiation(self, Strng):
+    def gdbDifferentiationTamilPhonetic(self, Strng):
         Strng = re.sub('[\u1DDC\u1DEE\u036D]', '', Strng)
+
+        return Strng
+
+    def gdbDifferentiationTamil(self, Strng):
+        Strng = re.sub('[ᵏᵗᵖ]', '', Strng)
 
         return Strng
 

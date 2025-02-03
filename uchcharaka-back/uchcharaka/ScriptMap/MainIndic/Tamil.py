@@ -63,7 +63,7 @@ SinhalaVowelSignMap = [
                       ]
 
 AyogavahaMap = [
-               '\u0BAE\u0BCD\u02EE',
+               '(ன்)',
                '\u0BAE\u0BCD\u02BC',
                '꞉' # Modifying letter colon for Visarga
                ]
@@ -73,34 +73,34 @@ ViramaMap =  [
              ]
 
 ConsonantMap =  [
-                '\u0B95',
-                '\u0B95\u00B2',
-                '\u0B95\u00B3',
-                '\u0B95\u2074',
+                '\u0B95ᵏ',
+                '\u0B95ᵏʰ',
+                '\u0B95ᵍ',
+                '\u0B95ᵍʰ',
                 '\u0B99',
 
-                '\u0B9A',
-                '\u0B9A\u00B2',
+                '\u0B9Aᶜʰ',
+                '\u0B9Aᶜʰʰ',
                 '\u0B9C',
-                '\u0B9C\u00B2',
+                '\u0B9Cʰ',
                 '\u0B9E',
 
-                '\u0B9F',
-                '\u0B9F\u00B2',
-                '\u0B9F\u00B3',
-                '\u0B9F\u2074',
+                '\u0B9Fᵗ',
+                '\u0B9Fᵗʰ',
+                '\u0B9Fᵈ',
+                '\u0B9Fᵈʰ',
                 '\u0BA3',
 
-                '\u0BA4',
-                '\u0BA4\u00B2',
-                '\u0BA4\u00B3',
-                '\u0BA4\u2074',
+                '\u0BA4ᵗ',
+                '\u0BA4ᵗʰ',
+                '\u0BA4ᵈ',
+                '\u0BA4ᵈʰ',
                 '\u0BA8',
 
-                '\u0BAA',
-                '\u0BAA\u00B2',
-                '\u0BAA\u00B3',
-                '\u0BAA\u2074',
+                '\u0BAAᵖ',
+                '\u0BAAᵖʰ',
+                '\u0BAAᵇ',
+                '\u0BAAᵇʰ',
                 '\u0BAE',
 
                 '\u0BAF',
@@ -125,7 +125,7 @@ NuktaConsonantMap =  [
                      '\u0B83\u02BC\u0B95',
                      '\u0B83\u0B95\u00B2',
                      '\u0B83\u0B95\u00B3',
-                     '\u0B83\u0B9C',
+                     '\u0B9Cᶻ',
                      '\u0B83\u0B9F\u00B2',
                      '\u0B83\u0B9F\u00B3',
                      '\u0B83\u0BAA',

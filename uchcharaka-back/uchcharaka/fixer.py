@@ -39,23 +39,6 @@ class Fixer:
 
         return Strng
 
-    def FixTamil(self, Strng):
-        ListVS = '(' + '|'.join(helper.CrunchSymbols(helper.VowelSigns,self.tgt)) + ')'
-
-        Strng = re.sub('(·)'+ListVS, r'\2\1', Strng)
-
-        return Strng
-
-    def FixTamilPhonetic(self, Strng):
-        VedicSign = ['॑', '॒', '᳚']
-        TamilDiacritic = ['ʼ', 'ˮ', '꞉']#, '²', '³', '⁴', '₂', '₃', '₄']
-
-        for x in TamilDiacritic:
-            for y in VedicSign:
-                Strng = Strng.replace(x + y, y + x)
-
-        return Strng
-
     # Urdu - Shadda, Final E
     def FixUrdu(self, Strng):
         # .replace(u'\u064E','')

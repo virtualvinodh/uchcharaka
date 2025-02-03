@@ -65,7 +65,9 @@ Inter = "Inter"
 Characters = Vowels + VowelSigns + CombiningSigns + Consonants
 CharactersNV = Vowels + VowelSignsNV + CombiningSigns + Consonants
 
-Diacritics = ['ʽ', '\u00B7', '\u00B9','\u00B2','\u00B3','\u2074','\u2081','\u2082','\u2083','\u2084', '\u1DDC', '\u1DDA', '\u036d', '\u0369', '\u1DEE', '\u1DE8', '\u1DE3', '\u1DF1', '\u1DEB', '\u1de6', '\u0368\u036A', '\u036D\u036A', '\u1DD9', '\u0368', '\u036F', '\u1DDB', '\u0323', '\u036A']
+TamilDiacritics = ['ˢʰ', 'ᵖʰ', 'ᵍʰ', 'ᵏʰ', 'ᶜʰʰ', 'ᵗʰ', 'ᵀʰ', 'ᶜʰ', 'ᵈʰ', 'ᵇʰ', 'ᵍ', 'ᵇ', 'ᵈ', 'ᶻ', 'ʷ', 'ᵏ', 'ᵗ','ʰ', 'ᶜ', 'ᶞ', 'ʳ', 'ᶿ', 'ᶠ', 'ᵀ', 'ᴰ', 'ᵖ', 'ʰ', 'ʶ', 'ʸ', 'ʲ']
+
+Diacritics = ['ʽ', '\u00B7', '\u00B9','\u00B2','\u00B3','\u2074','\u2081','\u2082','\u2083','\u2084', '\u1DDC', '\u1DDA', '\u036d', '\u0369', '\u1DEE', '\u1DE8', '\u1DE3', '\u1DF1', '\u1DEB', '\u1de6', '\u0368\u036A', '\u036D\u036A', '\u1DD9', '\u0368', '\u036F', '\u1DDB', '\u0323', '\u036A'] + TamilDiacritics
 DiacriticsRemovable = ['ʼ', 'ˇ', 'ˆ', '˘', '\u00B7']
 DiacriticsRemovableTamil = ['ˇ', 'ˆ', '˘', '\u00B7']
 
