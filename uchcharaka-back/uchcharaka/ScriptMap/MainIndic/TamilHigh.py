@@ -42,7 +42,7 @@ IPAVowelMap = [
 
 NuktaConsonantMap =  [
                      'ஃʼக',
-                     'ஃக²',
+                     'கˣ',
                      'கˠ',
                      'ஜᶻ',
                      'ஃட³',

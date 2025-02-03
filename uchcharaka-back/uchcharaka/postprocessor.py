@@ -101,11 +101,21 @@ class PostProcessor:
 
         return Strng
 
-    def removeDifferentiation(self, Strng):
+    def removeDifferentiationTamil(self, Strng):
         Strng = Strng.replace('ஜᷦ', 'ஃஜ').replace('பᷫ', 'ஃப')
 
-        for dia in helper.Diacritics:
-            Strng = Strng.replace(dia, '')
+        if 'Phonetic' not in self.tgt:
+            for dia in helper.Diacritics:
+                Strng = Strng.replace(dia, '')
+
+        return Strng
+
+    def removeDifferentiationTamilPhonetic(self, Strng):
+        Strng = Strng.replace('ஜᷦ', 'ஃஜ').replace('பᷫ', 'ஃப')
+
+        if 'Phonetic' not in self.tgt:
+            for dia in helper.Diacritics:
+                Strng = Strng.replace(dia, '')
 
         return Strng
 

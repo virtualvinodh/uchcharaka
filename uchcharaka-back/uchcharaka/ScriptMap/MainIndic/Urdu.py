@@ -253,6 +253,7 @@ IPAVowelSignMap = [
 
 IPAConsonantMap =[
                      'ٹَ',
+                     'ٹھَ',
                      'ڈَ',
                      'وَ',
                      'وَ',
