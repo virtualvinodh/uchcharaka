@@ -10,6 +10,10 @@ class Transcriber:
         scriptList = helper.IndicScripts + helper.LatinScripts
         scriptListLower = list(map(lambda x: x.lower(), scriptList))
 
+        # speical processing for Tamil
+        if 'removeDifferentiation' in postoptions and 'Tamil' in tgt:
+            accuracy = 'Low'
+
         #Tamil Medium --> TamilMedium
         if tgt not in helper.inaccurate_scripts:
             tgt = tgt + accuracy.title()
@@ -37,7 +41,12 @@ class Transcriber:
     def transcribe(self, Strng):
         # transcribe to IPA only if source is not IPA
         if self.src != 'IPA':
-            ipa_transcription = espeak.text_to_phonemes(Strng, self.src)
+            try:
+                ipa_transcription = espeak.text_to_phonemes(Strng, self.src)
+            except Exception as e:
+                ipa_transcription = ''
+                print(e)
+                print(espeak.list_languages())
         else:
             ipa_transcription = Strng
 
@@ -57,10 +66,6 @@ class Transcriber:
         if 'showstress' not in self.postoptions:
             ipa_transcription = ipa_transcription.replace('ˈ', '').replace('ˌ', '')
             #self.preoptions.remove('showstress')
-
-        # speical processing for Tamil
-        if 'removeDifferentiation' in self.postoptions and 'Tamil' in self.tgt:
-            self.accuracy = 'Low'
 
         if 'IPA' in self.tgt:
             return ipa_transcription

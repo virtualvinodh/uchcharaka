@@ -134,6 +134,10 @@ export const ScriptMixin = {
           value: 'Tamil'
         },
         {
+          label: 'Tamil Phonetic',
+          value: 'TamilPhonetic'
+        },
+        {
           label: 'Telugu',
           value: 'Telugu'
         },

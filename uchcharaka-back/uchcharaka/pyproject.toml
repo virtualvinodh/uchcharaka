@@ -1,0 +1,26 @@
+[project]
+name = "uchcharaka"
+version = "1.0"
+authors = [
+  { name="Vinodh Rajan", email="vinodh@virtualvinodh.com" },
+]
+description = "Uchcharaka is designed to transcribe non-Indian languages into Indian scripts while closely preserving their native pronunciations. It offers three levels of transcription, ranging from low to high fidelity. The high-fidelity level retains as many non-Indic phonemes as possible, while the low-fidelity level captures only the essential phonetic elements. Currently, the tool supports English (US and UK), Spanish (Spain and Latin America), Portuguese (Brazil and Portual), Italian, German, and French."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Text Processing :: Linguistic",
+    "Natural Language :: English",
+    "Natural Language :: Tamil",
+    "Natural Language :: Telugu",
+    "Natural Language :: Malayalam",
+    "Natural Language :: Kannada",
+    "Natural Language :: Urdu",
+    "Natural Language :: Hindi"
+]
+license = {file = "LICENSE"}
+
+[project.urls]
+Homepage = "https://github.com/virtualvinodh/uchcharaka"
+Issues = "https://github.com/virtualvinodh/uchcharaka/issues"

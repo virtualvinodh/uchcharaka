@@ -78,6 +78,7 @@ IndicScriptsBase = [
                'Telugu',
                'Kannada',
                'Malayalam',
+               'TamilPhonetic',
                'Tamil',
                'Sinhala',
                'Urdu'

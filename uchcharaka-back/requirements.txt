@@ -2,4 +2,4 @@ Flask>=2.0.3
 Flask-CORS>=3.0.6
 Requests>=2.20.1
 regex>=2021.8.3
-espeak-py == 0.1.7
+espeak-py

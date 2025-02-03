@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from . import helper
-from uchcharaka.ScriptMap.MainIndic import Malayalam,Sinhala,TamilExtended
+from uchcharaka.ScriptMap.MainIndic import Malayalam,Sinhala
 import re
 
 class PostProcessor:
@@ -68,8 +68,15 @@ class PostProcessor:
             helper.CrunchList('AyogavahaMap',self.tgt)[1] + '])'
         Strng = re.sub('('+Diac+')'+'('+VS+')',r'\2\1',Strng)
 
-        if self.tgt == 'Tamil':
+        if 'Tamil' in self.tgt:
             Strng = Strng.replace( '³்', '்³',)
+            VedicSign = ['॑', '॒', '᳚']
+            TamilDiacritic = ['ʼ', 'ˮ', '꞉', '²', '³', '⁴', '₂', '₃', '₄']
+            print(Strng)
+            for x in TamilDiacritic:
+                for y in VedicSign:
+                    Strng = Strng.replace(y + x, x + y)
+
         if 'Malayalam' in self.tgt:
             dot = '(\u0323)'
             #Strng = re.sub(dot + '(\u03dc)', r'\2\1', Strng)
@@ -80,7 +87,7 @@ class PostProcessor:
             Strng = re.sub('(['+VedicSign+']+)'+chandraAnu, r'\2\1', Strng)
         if 'Malayalam' in self.tgt:
             Strng = re.sub('(\u0323)([\u0D3B\u0d3C])'+chandraAnu, r'\2\3\1', Strng)
-        if 'Tamil' in self.tgt:
+        if 'TamilPhonetic' in self.tgt:
             Strng = re.sub('(\u033C)([\u1DEE\u1DDC\u036D])',r'\2\1', Strng)
 
         return Strng

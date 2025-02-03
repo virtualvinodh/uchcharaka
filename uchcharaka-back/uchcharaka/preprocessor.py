@@ -41,7 +41,7 @@ class Preprocessor:
             Strng = Strng.replace(x, y)
 
         #remove the ties if not Tamil or IPA
-        if 'Tamil' not in self.tgt and 'IPA' not in self.tgt:
+        if 'TamilPhonetic' not in self.tgt and 'IPA' not in self.tgt:
             Strng = Strng.replace('\u0361', '')
 
         # move stress mark before the consonant p'o -> 'po

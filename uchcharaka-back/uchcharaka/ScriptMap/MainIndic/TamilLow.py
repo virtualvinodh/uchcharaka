@@ -1,252 +1,106 @@
-# -*- coding: utf-8 -*-
+from .Tamil import *
 
-# Script Mapping for Devanagari
+ConsonantMap = ConsonantMap[:]
+ConsonantMap[29] = ConsonantMap[30]
 
-VowelMap =  [
-            '\u0B85',
-            '\u0B86',
-            '\u0B87',
-            '\u0B88',
-            '\u0B89',
-            '\u0B8A',
-            '#',
-            '#',
-            '#',
-            '#',
-            '\u0B8F',
-            '\u0B90',
-            '\u0B93',
-            '\u0B94',
-            ]
-
-SouthVowelMap = [
-                '\u0B8E',
-                '\u0B92',
-                ]
+SouthConsonantMap = SouthConsonantMap[:]
+SouthConsonantMap[2] = ConsonantMap[26]
 
 ModernVowelMap = [
-                 '\u0B8F',
-                 '\u0B86'
+                 'ஏ',
+                 'ஆ॒॑',
                  ]
 
-SinhalaVowelMap = [
-                  '#'
-]
+ModernVowelSignMap =[
+                    'ே',
+                    'ா',
+                    ]
 
 IPAVowelMap = [
-                  '\u0B85',
-                  '\u0B85',
+                  'அ',
+                  'அ',
 
-                  '\u0B85',
-                  '\u0B86',
-                  '\u0B86',
-                  '\u0B86',
+                  'அ',
+                  'ஆ',
+                  'ஆ',
+                  'ஆ',
 
+                  'இ',
+                  'இ',
 
-                  '\u0B88',
-                  'உ்',
+                  'உ',
+                  'உ',
+                  'ஊ',
 
-                  '\u0B89',
-                  '\u0B89',
-                  '\u0B8A',
-
-                  '\u0B8E',
-                  '\u0B8E',
+                  'எ',
+                  'எ',
                   'எர்',
                   'ஏர்',
 
-                  '\u0B86',
-                  '\u0B86',
+                  'ஆ',
+                  'ஆ',
 
-                  '\u0B92',
-                  '\u0B93',
-                  '\u0B92',
-                  '\u0B93',
-
+                  'ஒ',
+                  'ஓ',
+                  'ஒ',
+                  'ஓ'
                   ]
 
-VowelSignMap =  [
-                '\u0BBE',
-                '\u0BBF',
-                '\u0BC0',
-                '\u0BC1',
-                '\u0BC2',
-                '#',
-                '#',
-                '#',
-                '#',
-                '\u0BC7',
-                '\u0BC8',
-                '\u0BCB',
-                '\u0BCC',
-                ]
-
-SouthVowelSignMap = [
-                    '\u0BC6',
-                    '\u0BCA',
-                    ]
-
-ModernVowelSignMap =[
-                    '\u0BC7',
-                    '\u0BBE'
-                    ]
-
-SinhalaVowelSignMap = [
-                      '#'
-]
-
-IPAVowelSignMap = [
-                       '\u02BD',
-                       '\u02BD',
-
-                       '\u02BD',
-                       '\u0BBE',
-                       '\u0BBE',
-                       '\u0BBE',
-
-
-                      '\u0BBF',
-                        'ு்',
-
-                      '\u0BC1',
-                      '\u0BC1',
-                      '\u0BC2',
-
-                      '\u0BC6',
-                      '\u0BC7',
-                      'ெர்',
-                      'ேர்',
-
-                      '\u0BBE',
-                      '\u0BBE',
-
-                      '\u0BCA',
-                      '\u0BCB',
-                      '\u0BCA',
-                      '\u0BCB'
-                      ]
-
-AyogavahaMap = [
-               '\u0BA9\U00011301',
-               '\u0BA9\U00011301\u02BD',
-               '꞉' # Modifying letter colon for Visarga
-               ]
-
-ViramaMap =  [
-             '\u0BCD'
-             ]
-
-ConsonantMap =  [
-                '\u0B95\u1DDC',
-                '\u0B95\u1DDC',
-                '\u0B95\u1DDA',
-                '#',
-                '\u0B99',
-
-                '\u0B9A\u0368\u036A',
-                '#',
-                '\u0B9C',
-                '#',
-                '\u0B9E',
-
-                '\u0B9F',
-                '#',
-                '\u0B9F',
-                '#',
-                '\u0BA3',
-
-                '\u0BA4\u036d',
-                '#',
-                '\u0BA4\u0369',
-                '#',
-                '\u0BA8',
-
-                '\u0BAA\u1DEE',
-                '\u0BAA\u1DEE',
-                '\u0BAA\u1DE8',
-                '#',
-                '\u0BAE',
-
-                '\u0BAF',
-                '\u0BB0',
-                '\u0BB2',
-                '\u0BB5',
-
-                '\u0BB7',
-                '\u0BB7',
-                '\u0BB8',
-                '\u0BB9'
-                ]
-
-SouthConsonantMap = [
-                    '#',
-                    '#',
-                    'ற',
-                    '\u0BA9'
-                    ]
-
 NuktaConsonantMap =  [
-                     '#',
+                     'க',
                      'ஹ',
-                     '\u0B95\u1DDA',
-                     '\u0B9C\u1DE6',
-                     '#',
-                     '#',
-                     '\u0BAA\u1DEB',
-                     '#'
+                     'க³',
+                     'ஃஜ',
+                     'ட⁴',
+                     'ட⁴',
+                     'ஃப',
+                     'ய'
                      ]
 
-SinhalaConsonantMap =[
-                     '#',
-                     '#',
-                     '#',
-                     '#',
-                     '#',
-                      ]
+IPAVowelSignMap = [
+                  '\u02BD',
+                  '\u02BD',
+
+                  'ா',
+                  'ா',
+                  'ா',
+                  'ா',
+
+                  'ி',
+                  'ி',
+
+                  'ு',
+                  'ு',
+                  'ூ',
+
+                  'ெ',
+                  'ெ',
+                  'ெர்',
+                  'ேர்',
+
+                  'ா',
+                  'ா',
+
+                  'ொ',
+                  'ோ',
+                  'ொ',
+                  'ோ'
+                ]
 
 IPAConsonantMap =[
-                     '\u0B9F\u036d',
-                     '\u0B9F\u036d',
-                     '\u0B9F\u0369',
-                     '\u0BB5',
-                     '\u0BB5',
-                     '\u0BA4\u036D',
-                     '\u0BA4\u0369',
-                     '\u0BB0',
-                     '\u0BB7',
-                     '\u0BB5',
-                     'ஜ',
+                     'ட',
+                     'ட²',
+                     'ட³',
+                     'வ',
+                     'வ',
+                     'த',
+                     'த³',
+                     'ர',
+                     'ஷ',
+                     'ப³',
+                     'ய்ஜ',
                      'ய',
-                     '\u0BB0',
-                     '\u0BB9',
-                     '\u0BB7'
+                     'ர',
+                     'ஹ',
+                     'ஷ'
                       ]
-
-NuktaMap = [
-           '\u00B7'
-           ]
-
-OmMap = [
-        '\u0BD0'
-        ]
-
-SignMap =[
-         '\u0028\u0B85\u0029',
-         '\u0964',
-         '\u0965'
-         ]
-
-Aytham =['\u0B83']
-
-NumeralMap = [
-             '\u0BE6',
-             '\u0BE7',
-             '\u0BE8',
-             '\u0BE9',
-             '\u0BEA',
-             '\u0BEB',
-             '\u0BEC',
-             '\u0BED',
-             '\u0BEE',
-             '\u0BEF'
-             ]

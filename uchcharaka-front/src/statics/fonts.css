@@ -19,6 +19,12 @@
   font-feature-settings: "ss01";
   font-size: 115%;
 }
+.tamilphonetic {
+  font-family: "AnglamTamil" !important;
+  line-height: 1.7em;
+  font-feature-settings: "ss01";
+  font-size: 115%;
+}
 .sinhala {
   font-family: "Noto Sans Sinhala" !important;
   font-size: 120%;

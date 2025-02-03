@@ -1,7 +1,7 @@
 # our base image
 # espeak py won't work for other version and it should be debian
 # else it will try to build the wheel and fail miserably
-FROM python:3.10
+FROM python:3.10-bullseye
 
 # copy frontend
 ADD ./uchcharaka-front/dist/spa-mat/ /var/www/html

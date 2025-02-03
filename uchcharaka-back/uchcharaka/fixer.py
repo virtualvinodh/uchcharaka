@@ -40,6 +40,13 @@ class Fixer:
         return Strng
 
     def FixTamil(self, Strng):
+        ListVS = '(' + '|'.join(helper.CrunchSymbols(helper.VowelSigns,self.tgt)) + ')'
+
+        Strng = re.sub('(·)'+ListVS, r'\2\1', Strng)
+
+        return Strng
+
+    def FixTamilPhonetic(self, Strng):
         VedicSign = ['॑', '॒', '᳚']
         TamilDiacritic = ['ʼ', 'ˮ', '꞉']#, '²', '³', '⁴', '₂', '₃', '₄']
 
