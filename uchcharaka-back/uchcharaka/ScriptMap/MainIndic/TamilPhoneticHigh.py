@@ -204,9 +204,9 @@ SinhalaConsonantMap =[
                       ]
 
 IPAConsonantMap =[
-                     '\u0B9F\u036d',
-                     '\u0BB9\u036d',
-                     '\u0B9F\u0369',
+                     '\u0B9F\u036D\u036A',
+                     '\u0BB9\u036D\u036A',
+                     '\u0B9F\u1DD9',
                      '\u0BB5\u1DF1',
                      '\u0BB5\u1DEB',
                      '\u0BA4\u036D\u036A',
