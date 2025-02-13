@@ -8,10 +8,9 @@
               <th v-if="!inaccurateScripts.includes(script)">Low</th>
               <th v-if="inaccurateScripts.includes(script)"></th>
             </tr>
-            <span></span>
             <tr v-for="(data,i) in consonants" :key="i">
               <td :class="ipa">{{data.phoneme}}
-                <q-btn icon="record_voice_over" flat compact class="q-ml-sm" @click="audioIPA(data.phoneme)"/>
+                <q-btn icon="record_voice_over" flat compact class="q-ml-sm" @click="audioIPA(data.phoneme)" v-if="data.filename"/>
                 <a :href="'https://en.wikipedia.org/wiki/'+data.wikilink" target="_blank" v-if="data.wikilink" class="text-grey-10"><q-icon name="link"></q-icon></a>
               </td>
               <td :class="script.toLowerCase()" v-if="!inaccurateScripts.includes(script)">

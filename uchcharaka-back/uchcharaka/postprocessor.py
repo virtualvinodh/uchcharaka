@@ -68,26 +68,23 @@ class PostProcessor:
             helper.CrunchList('AyogavahaMap',self.tgt)[1] + '])'
         Strng = re.sub('('+Diac+')'+'('+VS+')',r'\2\1',Strng)
 
-        if 'Tamil' in self.tgt:
+        if 'TamilPhonetic' in self.tgt:
+            Strng = re.sub('(\u033C)([\u1DEE\u1DDC\u036D])',r'\2\1', Strng)
+        elif 'Tamil' in self.tgt:
             Strng = Strng.replace( '³்', '்³',)
             VedicSign = ['॑', '॒', '᳚']
 
-            for x in helper.TamilDiacritics:
-                for y in VedicSign:
-                    Strng = Strng.replace(x + y, y + x)
-
-        if 'Malayalam' in self.tgt:
+            Strng = re.sub('(['+''.join(helper.TamilDiacritics)+'])' + \
+                           '(['+''.join(VedicSign)+']+)', r'\2\1', Strng)
+        elif 'Malayalam' in self.tgt:
             dot = '(\u0323)'
             #Strng = re.sub(dot + '(\u03dc)', r'\2\1', Strng)
             Strng = re.sub(dot + '(['+VedicSign+']+)', r'\2\1', Strng)
             Strng = re.sub(dot + chandraAnu, r'\2\1', Strng)
-
-        if 'Telugu' in self.tgt or 'Devanagari' in self.tgt or 'Malayalam' in self.tgt:
-            Strng = re.sub('(['+VedicSign+']+)'+chandraAnu, r'\2\1', Strng)
-        if 'Malayalam' in self.tgt:
             Strng = re.sub('(\u0323)([\u0D3B\u0d3C])'+chandraAnu, r'\2\3\1', Strng)
-        if 'TamilPhonetic' in self.tgt:
-            Strng = re.sub('(\u033C)([\u1DEE\u1DDC\u036D])',r'\2\1', Strng)
+
+        elif 'Telugu' in self.tgt or 'Devanagari' in self.tgt or 'Malayalam' in self.tgt:
+            Strng = re.sub('(['+VedicSign+']+)'+chandraAnu, r'\2\1', Strng)
 
         return Strng
 

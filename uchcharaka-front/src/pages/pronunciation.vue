@@ -17,6 +17,7 @@
            </q-btn-group>
             <phoneme-list :consonants="consonants" :consonantsMap="consonantsMap" :script="script"
               v-if="mode == 'Consonants'"/>
+            <div v-if="mode == 'Vowels'" class="q-ma-md">ː denotes long version of the vowel</div>
             <phoneme-list :consonants="vowels" :consonantsMap="vowelsMap" :script="script"
             v-if="mode == 'Vowels'"/>
         </q-tab-pane>
@@ -91,7 +92,7 @@ export default {
           phoneme: 'ɔː',
           name: 'Long: Open-mid back rounded vowel',
           filename: '',
-          wikilink: 'Open-mid back rounded vowel',
+          wikilink: '',
           transcription: '',
           approximation: '',
           note: ''
@@ -153,8 +154,8 @@ export default {
         {
           phoneme: 'aː',
           name: 'Long: Open front unrounded vowel',
-          filename: 'Open_front_unrounded_vowel',
-          wikilink: 'Open front unrounded vowel',
+          filename: '',
+          wikilink: '',
           transcription: '',
           approximation: '',
           note: ''
@@ -207,8 +208,8 @@ export default {
         {
           phoneme: 'ɛː',
           name: 'Long: Open-mid front unrounded vowel',
-          filename: 'Open-mid_front_unrounded_vowel',
-          wikilink: 'Open-mid front unrounded vowel',
+          filename: '',
+          wikilink: '',
           transcription: '',
           approximation: '',
           note: ''
@@ -235,7 +236,7 @@ export default {
           phoneme: 'ɜː',
           name: 'Long: Open-mid central unrounded vowel',
           filename: '',
-          wikilink: 'Open-mid central unrounded vowel',
+          wikilink: '',
           transcription: '',
           approximation: '',
           note: ''
@@ -253,7 +254,7 @@ export default {
           phoneme: 'øː',
           name: 'Long: Close-mid front rounded vowel',
           filename: '',
-          wikilink: 'Close-mid front rounded vowel',
+          wikilink: '',
           transcription: '',
           approximation: '',
           note: ''
@@ -271,18 +272,18 @@ export default {
       consonants: [
         {
           phoneme: 'z',
-          name: 'Voiceless Alveolar Plosive',
-          filename: 'Voiceless_alveolar_plosive',
-          wikilink: 'Voiceless_dental_and_alveolar_plosives',
+          name: 'Voiced alveolar fricative',
+          filename: 'Voiced_alveolar_sibilant',
+          wikilink: 'Voiced_alveolar_fricative',
           transcription: '',
           approximation: '',
           note: 'The tongue does not go as far back'
         },
         {
           phoneme: 'f',
-          name: 'Voiceless Alveolar Plosive',
-          filename: 'Voiceless_alveolar_plosive',
-          wikilink: 'Voiceless_dental_and_alveolar_plosives',
+          name: 'Voiceless labiodental fricative',
+          filename: 'Voiceless_labio-dental_fricative',
+          wikilink: 'Voiceless_labiodental_fricative',
           transcription: '',
           approximation: '',
           note: 'The tongue does not go as far back'

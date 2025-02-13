@@ -50,7 +50,7 @@ NuktaConsonantMap =  [
                      'க',
                      'ஹ',
                      'கᵍ',
-                     'ஜ',
+                     'ஜᶻ',
                      'ட⁴',
                      'ட⁴',
                      'ஃப',
@@ -89,7 +89,7 @@ IPAVowelSignMap = [
 
 IPAConsonantMap =[
                      'டᵗ',
-                     'டᵗʰ',
+                     'டᵗ',
                      'டᵈ',
                      'வ',
                      'வ',
