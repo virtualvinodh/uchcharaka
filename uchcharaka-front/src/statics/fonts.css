@@ -5,8 +5,8 @@
 
 
 @font-face {
-  font-family: 'AnglamTamil';
-  src: url('./NotoSansTamil-Regular-phonetic.otf');
+  font-family: 'Chakreshvari Tamil Phonetic';
+  src: url('./Chakeshvarai-Tamil-Phonetic.otf');
 }
 
 .kannada {
@@ -14,13 +14,13 @@
   font-size: 120%;
 }
 .tamil {
-  font-family: "AnglamTamil" !important;
+  font-family: "Chakreshvari Tamil Phonetic" !important;
   line-height: 1.7em;
   font-feature-settings: "ss01";
   font-size: 115%;
 }
 .tamilphonetic {
-  font-family: "AnglamTamil" !important;
+  font-family: "Chakreshvari Tamil Phonetic" !important;
   line-height: 1.7em;
   font-feature-settings: "ss01";
   font-size: 115%;
