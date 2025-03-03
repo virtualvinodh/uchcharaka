@@ -23,7 +23,7 @@ class Fixer:
             Strng = getattr(self, fixerFunction)(Strng)
         except Exception as e:
             pass
-            print(e)
+            #print(e)
 
         Strng = Strng.replace('\u02BD','')
 

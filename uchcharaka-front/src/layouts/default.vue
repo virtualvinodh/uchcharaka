@@ -50,7 +50,7 @@
 
         <q-item to="/transcriber">
           <q-item-side icon="translate"/>
-          <q-item-main label="Transcriptor"/>
+          <q-item-main label="Transcriber"/>
         </q-item>
         <q-collapsible icon="book" label="Sample Texts"  >
             <q-item :to="'/texts/' + text.path" v-for="text in texts" :key="text.path">

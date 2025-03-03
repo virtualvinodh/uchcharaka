@@ -27,6 +27,7 @@ RUN pip3 install -r requirements.txt
 RUN chmod +x start.sh
 RUN sed -i '/LoadModule rewrite_module/s/^#//g' /etc/apache2/apache2.conf
 RUN sed -i 's#AllowOverride [Nn]one#AllowOverride All#' /etc/apache2/apache2.conf
+RUN a2enmod rewrite
 RUN a2enmod proxy
 RUN a2enmod proxy_http
 

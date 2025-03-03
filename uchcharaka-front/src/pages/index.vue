@@ -311,7 +311,11 @@ export default {
   computed: {
     voiceList: function () {
       console.log(this.refresh)
-      return this.getVoiceList(this.inputScript)
+      if (this.inputScript) {
+        return this.getVoiceList(this.inputScript)
+      } else {
+        return []
+      }
     },
     voiceExists: function () {
       return this.voiceList.length > 0
