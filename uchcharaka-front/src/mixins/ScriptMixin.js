@@ -105,7 +105,7 @@ export const ScriptMixin = {
             value: 'gdbDifferentiationTamil'
           },
           {
-            label: 'Remove all differentiation<br/><small><span class="tamil">கேட் கேட் மேட் பீட் பீட்</span> → <span class="tamil">கேட் கேட் மேட் பீட் பீட்</span></small>',
+            label: 'Remove all differentiation<br/><small><span class="tamil">கேᵏட்ᵗ கேᵍட்ᵗ மேட்ᵈ பீᵇட்ᵗ பீᵖட்ᵗ</span> → <span class="tamil">கேட் கேட் மேட் பீட் பீட்</span></small>',
             value: 'removeDifferentiationTamil'
           }
         ],
@@ -113,10 +113,6 @@ export const ScriptMixin = {
           {
             label: 'Differentiate only /g/ /d/ /b/ <br/><small><span class="tamil">கேᷜட்ͭ கேᷚட்ͭ மேட்ͩ பீᷨட்ͭ பீᷮட்ͭ</span> → <span class="tamil">கேட் கேᷚட் மேட்ͩ பீᷨட் பீட்</span></small>',
             value: 'gdbDifferentiationTamilPhonetic'
-          },
-          {
-            label: 'Remove all differentiation<br/><small> <span class="tamil">காᷚᷲட்ͩ காᷜᷲட்ͩ காᷜᷭட்ͭ</span> → <span class="tamil">காட் காட் காட்</span></small>',
-            value: 'removeDifferentiationTamilPhonetic'
           }
         ]
       },
