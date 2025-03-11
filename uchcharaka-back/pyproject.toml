@@ -1,6 +1,6 @@
 [project]
 name = "uchcharaka"
-version = "1.0"
+version = "1.1"
 authors = [
   { name="Vinodh Rajan", email="vinodh@virtualvinodh.com" },
 ]
@@ -10,12 +10,9 @@ requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
-    "Text Processing :: Linguistic",
     "Natural Language :: English",
     "Natural Language :: Tamil",
     "Natural Language :: Telugu",
-    "Natural Language :: Malayalam",
-    "Natural Language :: Kannada",
     "Natural Language :: Urdu",
     "Natural Language :: Hindi"
 ]
