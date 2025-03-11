@@ -5,9 +5,9 @@
     <h5> How to Use </h5> <br/>
     <p class="q-body-1">Install, Aksharamukha from pip </p>
 
-    <span class="code">pip install uccharaka</span><br/><br/>
+    <span class="code">pip install uchcharaka</span><br/><br/>
 
-    <span class="code">from uccharaka import transcriber as tr</span> <br/> <br/>
+    <span class="code">from uchcharaka import transcriber as tr</span> <br/> <br/>
 
     <hr/>
     <span class="code">transcriber = tr.Transcriber(language, script, accuracy='medium', preoptions = [], postoptions = [])</span><br/>
