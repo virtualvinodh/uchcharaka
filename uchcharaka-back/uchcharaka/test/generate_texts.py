@@ -1,11 +1,9 @@
-import sys,os, json, pytest
+import sys,os
+import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 from uchcharaka import transcriber as tr
 
-languages = ['it', 'es-419', 'es', 'en-us', 'en-gb', 'de', 'fr', 'pt-br', 'pt-pt']
-scripts = ['Tamil', 'Telugu', 'Kannada', 'Urdu', 'Devanagari', 'IPA', 'Sinhala', 'Malayalam']
-accuracy = ['Low', 'High', 'Medium']
 src_texts = {
         'it': "L'italiano è una lingua romanza parlata principalmente in Italia. Per ragioni storiche e geografiche, l'italiano è la lingua romanza meno divergente dal latino (complessivamente a pari merito, anche se in parametri diversi, con la lingua sarda). L'italiano è classificato al 23º posto tra le lingue per numero di parlanti nel mondo e, in Italia, è utilizzato da circa 58 milioni di residenti. Nel 2015 era la lingua materna del 90,4% dei residenti in Italia, che spesso lo acquisiscono e lo usano insieme alle varianti regionali dell'italiano, alle lingue regionali e ai dialetti. In Italia viene ampiamente usato per tutti i tipi di comunicazione della vita quotidiana e prevale largamente nei mezzi di comunicazione nazionali, nell'amministrazione pubblica dello Stato italiano e nell'editoria. Oltre ad essere la lingua ufficiale dell'Italia e di San Marino, è anche una delle lingue ufficiali dell'Unione europea, della Svizzera, della Città del Vaticano e del Sovrano militare ordine di Malta. È inoltre riconosciuto e tutelato come «lingua della minoranza nazionale italiana» dalla Costituzione slovena e croata nei territori in cui vivono popolazioni di dialetto istriano. È diffuso nelle comunità di emigrazione italiana, è ampiamente noto anche per ragioni pratiche in diverse aree geografiche ed è una delle lingue straniere più studiate nel mondo.Dal punto di vista storico, l'italiano è una lingua codificata tra Quattrocento e Cinquecento sulla base del fiorentino letterario usato nel Trecento.",
         'pt-br': 'A língua portuguesa, também designada português, é uma língua indo-europeia românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal. Com a criação do Reino de Portugal em 1139 e a expansão para o sul na sequência da Reconquista, deu-se a difusão da língua pelas terras conquistadas e, mais tarde, com as descobertas portuguesas, para o Brasil, África e outras partes do mundo. O português foi usado, naquela época, não somente nas cidades conquistadas pelos portugueses, mas também por muitos governantes locais nos seus contatos com outros estrangeiros poderosos. Especialmente nessa altura, a língua portuguesa também influenciou várias línguas. Durante a Era dos Descobrimentos, marinheiros portugueses levaram o seu idioma para lugares distantes. A exploração foi seguida por tentativas de colonizar novas terras para o Império Português e, como resultado, o português dispersou-se pelo mundo. Brasil e Portugal são os dois únicos países cuja língua primária é o português. É língua oficial em antigas colônias portuguesas, nomeadamente, Moçambique, Angola, Cabo Verde, Guiné Equatorial, Guiné-Bissau e São Tomé e Príncipe, todas na África. Além disso, por razões históricas, falantes do português, ou de crioulos portugueses, são encontrados também em Macau (China), Timor-Leste, em Damão e Diu, nos estados de Goa (Índia) e Malaca (na Malásia, que conta com utilizadores do crioulo kristáng, ou Língua cristã), em enclaves na ilha das Flores (Indonésia), Baticaloa no (Sri Lanka) e nas ilhas ABC no Caribe.',
@@ -18,14 +16,21 @@ src_texts = {
         'en-gb': 'English is a West Germanic language in the Indo-European language family, whose speakers, called Anglophones, originated in early medieval England on the island of Great Britain. The namesake of the language is the Angles, one of the ancient Germanic peoples that migrated to Britain. It is the most spoken language in the world, primarily due to the global influences of the former British Empire (succeeded by the Commonwealth of Nations) and the United States. English is the third-most spoken native language, after Mandarin Chinese and Spanish; it is also the most widely learned second language in the world, with more second-language speakers than native speakers. English is either the official language or one of the official languages in 59 sovereign states (such as India, Ireland, and Canada). In some other countries, it is the sole or dominant language for historical reasons without being explicitly defined by law (such as in the United States and United Kingdom). It is a co-official language of the United Nations, the European Union, and many other international and regional organisations. It has also become the de facto lingua franca of diplomacy, science, technology, international trade, logistics, tourism, aviation, entertainment, and the Internet. English accounts for at least 70% of total speakers of the Germanic language branch, and as of 2021, Ethnologue estimated that there were over 1.5 billion speakers worldwide.Old English emerged from a group of West Germanic dialects spoken by the Anglo-Saxons. Late Old English borrowed some grammar and core vocabulary from Old Norse, a North Germanic language. Then, Middle English borrowed vocabulary extensively from French dialects, which are the source of approximately 28% of Modern English words, and from Latin, which is the source of an additional 28%. As such, though most of its total vocabulary comes from Romance languages, Modern English\'s grammar, phonology, and most commonly used words in everyday use keep it genealogically classified under the Germanic branch. It exists on a dialect continuum with Scots and is then most closely related to the Low Saxon and Frisian languages.'
       }
 
-# Read JSON file and convert it back to a dictionary
-with open("texts.json", "r", encoding="utf-8") as json_file:
-    texts = json.load(json_file)  # Convert JSON to dictionary
+scripts = ['Tamil', 'Telugu', 'Kannada', 'Urdu', 'Devanagari', 'IPA', 'Sinhala', 'Malayalam']
+accuracy = ['Low', 'High', 'Medium']
 
-class TestOverall:
-    @pytest.mark.parametrize("language", languages)
-    @pytest.mark.parametrize("script", scripts)
-    @pytest.mark.parametrize("accuracy", accuracy)
-    def test_basic(self, language, script, accuracy):
-        transcriber = tr.Transcriber(language, script, accuracy=accuracy, preoptions = [], postoptions = [])
-        assert texts[language][script][accuracy] == transcriber.transcribe(src_texts[language])
+results = {}
+
+
+for language in src_texts.keys():
+    results[language] = {}
+    for script in scripts:
+        results[language][script] = {}
+        for acc in accuracy:
+            transcriber = tr.Transcriber(language, script, accuracy=acc, preoptions = [], postoptions = [])
+            results[language][script][acc] = transcriber.transcribe(src_texts[language])
+
+
+with open("texts.json", "w", encoding="utf-8") as json_file:
+    json.dump(results, json_file, indent=4, ensure_ascii=False)  # `indent=4` makes it human-readable
+
