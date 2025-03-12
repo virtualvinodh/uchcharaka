@@ -187,7 +187,6 @@ import pI18n from 'src/plugins/i18n'
 
 import pAxios from 'src/plugins/axios'
 
-import pAnalytics from 'src/plugins/analytics'
 
 
 
@@ -198,7 +197,12 @@ import pAnalytics from 'src/plugins/analytics'
 
 
 
+Vue.config.devtools = true
+Vue.config.productionTip = false
 
+
+
+console.info('[Quasar] Running SPA with MAT theme.')
 
 
 
@@ -207,7 +211,7 @@ const { app, router } = createApp()
 
 
 
-;[pI18n,pAxios,pAnalytics].forEach(plugin => {
+;[pI18n,pAxios].forEach(plugin => {
   plugin({
     app,
     router,
