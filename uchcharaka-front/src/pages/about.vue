@@ -7,7 +7,7 @@
 
         <!-- <div :style="{'width': '80%'}"><transliterate :text="about" src="en-gb" :tgt="scriptRandom" :sourcePreserve="'Medium'"></transliterate></div>
         <br/> -->
-        <div class="q-body-1">Uccharaka is also available as a <a href="https://pypi.org/project/uccharaka/">Python package</a>. You can read the usage instructions <a href="http://uccharaka.aksharamukha.com/python">here</a>.
+        <div class="q-body-1">Uchcharaka is also available as a <a href="https://pypi.org/project/uchcharaka/">Python package</a>. You can read the usage instructions <a href="http://uchcharaka.aksharamukha.com/python">here</a>.
         </div><br/>
 
         <div class="q-body-1">The source code is released under GNU AGPL and can be found in <a href="https://github.com/virtualvinodh/uchcharaka">Github</a>. Please report any bugs or suggestions over there.</div>

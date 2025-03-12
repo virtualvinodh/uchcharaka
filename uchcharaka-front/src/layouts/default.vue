@@ -104,7 +104,7 @@
         >
           </q-btn>
           <div class="print-only">
-            Uccharaka <br/>
+            Uchcharaka <br/>
             https://uchcharaka.aksharamukha.com
           </div>
         </q-toolbar>

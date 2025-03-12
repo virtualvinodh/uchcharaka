@@ -1,9 +1,9 @@
 {
-  "name": "uccharaka",
+  "name": "chcharaka",
   "version": "1.0.0",
   "description": "Transcribe Languages",
-  "productName": "Uccharaka",
-  "cordovaId": "org.cordova.quasar.uccharaka",
+  "productName": "Uchcharaka",
+  "cordovaId": "org.cordova.quasar.uchcharaka",
   "author": "Vinodh Rajan <vinodh@virtualvinodh.com>",
   "private": true,
   "scripts": {

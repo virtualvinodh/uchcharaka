@@ -121,7 +121,7 @@
     appear
   >
     <div class="q-ma-lg q-body-1 print-hide" id="scrollend">
-      Please report any bugs found in <a href="https://github.com/virtualvinodh/uccharaka/issues">Github</a>.
+      Please report any bugs found in <a href="https://github.com/virtualvinodh/uchcharaka/issues">Github</a>.
     </div>
   </transition>
   <a :href="brahmiImg" ref="imgDownload" :style="{'display': 'none'}" download="text.png"><button>Download</button></a>
