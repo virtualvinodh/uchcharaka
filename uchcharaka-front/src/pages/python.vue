@@ -3,7 +3,7 @@
     <h5> Python package</h5>
     <br/><br/><p>Uchcharaka requires espeak-ng to be installed and available in the system path. Please install <a href="https://github.com/espeak-ng/espeak-ng">eSpeak NG</a> in your system before installing Uchcharaka.</p>
     <h5> How to Use </h5> <br/>
-    <p class="q-body-1">Install, Aksharamukha from pip </p>
+    <p class="q-body-1">Install, Uchcharaka from pip </p>
 
     <span class="code">pip install uchcharaka</span><br/><br/>
 
